@@ -1,0 +1,38 @@
+[
+    {
+      "id": 1,
+      "nom": "T-shirt classique",
+      "categorie": "Vêtements",
+      "prix": 19.99,
+      "image": "https://placeimg.com/250/250/tech"
+    },
+    {
+      "id": 2,
+      "nom": "Jeans slim",
+      "categorie": "Vêtements",
+      "prix": 49.99,
+      "image": "https://placeimg.com/250/250/tech"
+    },
+    {
+      "id": 3,
+      "nom": "Casque Bluetooth",
+      "categorie": "Électronique",
+      "prix": 89.99,
+      "image": "https://placeimg.com/250/250/tech"
+    },
+    {
+      "id": 4,
+      "nom": "Montre connectée",
+      "categorie": "Accessoires",
+      "prix": 129.99,
+      "image": "https://placeimg.com/250/250/tech"
+    },
+    {
+      "id": 5,
+      "nom": "Sac à dos",
+      "categorie": "Bagagerie",
+      "prix": 39.99,
+      "image": "https://placeimg.com/250/250/tech"
+    }
+  ]
+  
