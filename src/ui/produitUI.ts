@@ -105,7 +105,7 @@ export class ProduitUI {
             const termeLower = recherche.toLowerCase();
             produitsFiltres = produitsFiltres.filter(p => 
                 p.nom.toLowerCase().includes(termeLower) || 
-                p.description.toLowerCase().includes(termeLower)
+                p.categorie.toLowerCase().includes(termeLower)
             );
         }
         

@@ -6,55 +6,11 @@ export class ProduitService {
     // Charger les produits depuis un fichier JSON
     async chargerProduits() {
         try {
-            // Dans un environnement réel, ceci serait un appel fetch
-            // Pour cette démonstration, on utilise des données hardcodées
-            this.produits = [
-                {
-                    id: 1,
-                    nom: "Smartphone Galaxy S21",
-                    categorie: "Électronique",
-                    prix: 799.99,
-                    image: "https://placeimg.com/250/250/tech",
-                    description: "Smartphone haut de gamme avec appareil photo professionnel",
-                    stock: 15
-                },
-                {
-                    id: 2,
-                    nom: "Laptop ProBook",
-                    categorie: "Électronique",
-                    prix: 1299.99,
-                    image: "https://placeimg.com/250/250/tech",
-                    description: "Ordinateur portable pour professionnels",
-                    stock: 8
-                },
-                {
-                    id: 3,
-                    nom: "Casque Audio Premium",
-                    categorie: "Audio",
-                    prix: 249.99,
-                    image: "https://placeimg.com/250/250/tech",
-                    description: "Casque sans fil avec réduction de bruit active",
-                    stock: 23
-                },
-                {
-                    id: 4,
-                    nom: "Montre Connectée Sport",
-                    categorie: "Accessoires",
-                    prix: 179.99,
-                    image: "https://placeimg.com/250/250/tech",
-                    description: "Suivi d'activité et notifications",
-                    stock: 12
-                },
-                {
-                    id: 5,
-                    nom: "https://placeimg.com/250/250/tech",
-                    categorie: "Audio",
-                    prix: 89.99,
-                    image: "https://via.placeholder.com/150",
-                    description: "Son puissant et batterie longue durée",
-                    stock: 30
-                }
-            ];
+            const response = await fetch('../../data/produit.json');
+            if (!response.ok) {
+                throw new Error("Fichier JSON introuvable");
+            }
+            this.produits = await response.json();
             this.notifierObservateurs();
         }
         catch (error) {
