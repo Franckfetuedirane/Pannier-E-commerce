@@ -11,18 +11,39 @@ export class PanierUI {
     // État d'ouverture du panier
     private estOuvert: boolean = false;
 
+
+    
+
     constructor(panierService: PanierService) {
         this.panierService = panierService;
-        
-        // Créer les éléments du DOM pour le panier
-        this.creerElementsPanier();
-        
-        // S'abonner aux mises à jour du panier
+    
+        const boutonPanier = document.getElementById('bouton-panier');
+        this.nombreArticlesElement = document.getElementById('nombre-articles') as HTMLElement;
+    
+        // Vérifie si c’est la page panier
+        const estPagePanier = document.getElementById('conteneur-panier') !== null;
+    
+        if (estPagePanier) {
+            // Utilise les éléments déjà présents dans le DOM
+            this.contenuElement = document.getElementById('contenu-panier')!;
+            this.totalElement = document.getElementById('total-panier')!;
+            
+            // Ajoute les listeners sur les boutons
+            document.getElementById('btn-commander')?.addEventListener('click', () => this.commander());
+            document.getElementById('btn-vider')?.addEventListener('click', () => this.panierService.viderPanier());
+        } else {
+            // Sinon, créer le mini-panier (flottant sur d'autres pages)
+            this.creerElementsPanier();
+    
+            // Ouvrir / fermer le mini-panier
+            boutonPanier?.addEventListener('click', () => this.togglePanier());
+        }
+    
+        // Abonnement et mise à jour
         this.panierService.abonner(() => this.mettreAJourUI());
-        
-        // Mise à jour initiale
         this.mettreAJourUI();
     }
+    
 
     // Création des éléments DOM du panier
     private creerElementsPanier(): void {
@@ -32,13 +53,17 @@ export class PanierUI {
         document.body.appendChild(this.panierElement);
 
         // Bouton du panier
-        const boutonPanier = document.createElement('div');
-        boutonPanier.className = 'bouton-panier';
-        boutonPanier.innerHTML = '<i class="fa fa-shopping-cart"></i>';
-        this.nombreArticlesElement = document.createElement('span');
-        this.nombreArticlesElement.className = 'nombre-articles';
-        boutonPanier.appendChild(this.nombreArticlesElement);
-        this.panierElement.appendChild(boutonPanier);
+        const boutonPanier = document.getElementById('bouton-panier');
+        if (boutonPanier) {
+            console.log('Bouton panier trouvé');
+            boutonPanier.addEventListener('click', () => {
+                console.log('Clic sur le bouton panier');
+                window.location.href = 'panier.html'; // Redirection si besoin
+            });
+        } else {
+            console.warn('Bouton panier introuvable');
+        }
+        
 
         // Contenu du panier (initialement caché)
         this.contenuElement = document.createElement('div');
@@ -72,7 +97,7 @@ export class PanierUI {
         this.contenuElement.appendChild(boutonsActions);
 
         // Événement pour ouvrir/fermer le panier
-        boutonPanier.addEventListener('click', () => this.togglePanier());
+        // boutonPanier.addEventListener('click', () => this.togglePanier());
     }
 
     // Mise à jour de l'interface utilisateur

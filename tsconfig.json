@@ -11,8 +11,16 @@
     "sourceMap": true,
     "declaration": false,
     "removeComments": false,
-    "lib": ["DOM", "ES2020"],
+    "lib": [
+      "DOM",
+      "ES2020"
+    ],
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules"]
+  "include": [
+    "src/**/*",
+    "src/ui/panierPage.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

@@ -101,7 +101,9 @@ header {
     transform: translateY(-5px);
 }
 
-/* .produit-carte img { 
+.produit-carte img { 
     width: 100%;
     height: auto;
-} */
+}
+
+
