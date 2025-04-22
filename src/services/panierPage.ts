@@ -1,87 +1,154 @@
-import { PanierService } from './PanierService.js'; // Corrigez le chemin si nécessaire
-import { ArticlePanier } from '../models/ArticlePanier.js'; // Corrigez le chemin si nécessaire
+import { PanierService } from './PanierService.js';
+import { ArticlePanier } from '../models/ArticlePanier.js';
 
-const panierService = new PanierService(); // Initialisation du panier
+declare global {
+  interface Window {
+    jspdf: any;
+  }
+}
 
-// Mettre à jour l'affichage du panier
+const panierService = new PanierService();
+
+//  Mettre à jour l'affichage du panier
 function mettreAJourPanier() {
-    const contenuPanier = document.getElementById('contenu-panier');
-    const totalPanier = document.getElementById('total-panier');
-    const panierArticles = panierService.getArticles();
+  const contenuPanier = document.getElementById('contenu-panier');
+  const totalPanier = document.getElementById('total-panier');
+  const panierArticles = panierService.getArticles();
 
-    if (contenuPanier && totalPanier) {
-        contenuPanier.innerHTML = '';
-        totalPanier.innerHTML = '';
+  if (contenuPanier && totalPanier) {
+    contenuPanier.innerHTML = '';
+    totalPanier.innerHTML = '';
 
-        if (panierArticles.length === 0) {
-            contenuPanier.innerHTML = '<p>Votre panier est vide.</p>';
-        } else {
-            panierArticles.forEach((article: ArticlePanier) => {
-                const articleElement = document.createElement('div');
-                articleElement.className = 'article-panier';
-                articleElement.innerHTML = `
-                    <div class="nom-article">${article.produit.nom}</div>
-                    <div class="prix-article">${article.produit.prix.toFixed(2)} € / unité</div>
-                    <div class="quantite-article">Quantité: ${article.quantite}</div>
-                    <button class="btn-supprimer" data-id="${article.produit.id}">Supprimer</button>
-                `;
-                contenuPanier.appendChild(articleElement);
-            });
+    if (panierArticles.length === 0) {
+      contenuPanier.innerHTML = '<p>Votre panier est vide.</p>';
+    } else {
+      panierArticles.forEach((article: ArticlePanier) => {
+        const articleElement = document.createElement('div');
+        articleElement.className = 'article-panier';
 
-            // Ajouter les événements sur les boutons SUPPRIMER maintenant que les éléments sont dans le DOM
-            const boutonsSupprimer = contenuPanier.querySelectorAll('.btn-supprimer');
-            boutonsSupprimer.forEach(button => {
-                button.addEventListener('click', (e) => {
-                    const produitId = parseInt((e.target as HTMLElement).getAttribute('data-id')!, 10);
-                    panierService.supprimerArticle(produitId);
-                    mettreAJourPanier(); // On refresh l'affichage
-                    mettreAJourNombreArticles();
-                });
-            });
+        articleElement.innerHTML = `
+          <div class="nom-article">${article.produit.nom}</div>
+          <div class="prix-article">${article.produit.prix.toFixed(2)} FCFA / unité</div>
+          <div class="quantite-article">
+            <button class="btn-moins" data-id="${article.produit.id}">-</button>
+            <span>${article.quantite}</span>
+            <button class="btn-plus" data-id="${article.produit.id}">+</button>
+          </div>
+          <button class="btn-supprimer" data-id="${article.produit.id}">Supprimer</button>
+        `;
 
-            const total = panierService.calculerTotal();
-            totalPanier.innerHTML = `Total: ${total.toFixed(2)} €`;
-        }
-    }
-}
+        contenuPanier.appendChild(articleElement);
+      });
 
-
-// Mettre à jour le nombre d'articles dans le panier dans l'header
-function mettreAJourNombreArticles() {
-    const nombreArticlesElement = document.getElementById('nombre-articles');
-    if (nombreArticlesElement) {
-        nombreArticlesElement.textContent = panierService.getNombreArticles().toString();
-    }
-}
-
-// Gestion des boutons de la page
-document.addEventListener('DOMContentLoaded', () => {
-    mettreAJourPanier();
-    mettreAJourNombreArticles();
-
-    // Gestion du bouton "Vider le panier"
-    const btnVider = document.getElementById('btn-vider');
-    if (btnVider) {
-        btnVider.addEventListener('click', () => {
-            panierService.viderPanier();
+      // Gestion des boutons +/-
+      contenuPanier.querySelectorAll('.btn-moins').forEach(button => {
+        button.addEventListener('click', (e) => {
+          const produitId = parseInt((e.target as HTMLElement).getAttribute('data-id')!, 10);
+          const article = panierService.getArticles().find(a => a.produit.id === produitId);
+          if (article) {
+            panierService.modifierQuantite(produitId, article.quantite - 1);
             mettreAJourPanier();
             mettreAJourNombreArticles();
+          }
         });
+      });
+
+      contenuPanier.querySelectorAll('.btn-plus').forEach(button => {
+        button.addEventListener('click', (e) => {
+          const produitId = parseInt((e.target as HTMLElement).getAttribute('data-id')!, 10);
+          const article = panierService.getArticles().find(a => a.produit.id === produitId);
+          if (article) {
+            panierService.modifierQuantite(produitId, article.quantite + 1);
+            mettreAJourPanier();
+            mettreAJourNombreArticles();
+          }
+        });
+      });
+
+      // Boutons supprimer
+      contenuPanier.querySelectorAll('.btn-supprimer').forEach(button => {
+        button.addEventListener('click', (e) => {
+          const produitId = parseInt((e.target as HTMLElement).getAttribute('data-id')!, 10);
+          panierService.supprimerArticle(produitId);
+          mettreAJourPanier();
+          mettreAJourNombreArticles();
+        });
+      });
+
+      const total = panierService.calculerTotal();
+      totalPanier.innerHTML = `Total: ${total.toFixed(2)} FCFA`;
+    }
+  }
+}
+
+//  Mettre à jour le nombre dans l'icône du panier
+function mettreAJourNombreArticles() {
+  const nombreArticlesElement = document.getElementById('nombre-articles');
+  if (nombreArticlesElement) {
+    nombreArticlesElement.textContent = panierService.getNombreArticles().toString();
+  }
+}
+
+//  Générer une facture PDF
+function genererFacturePDF() {
+  const panierArticles = panierService.getArticles();
+  const total = panierService.calculerTotal();
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+
+  let y = 10;
+  doc.text('Facture - MaBoutique', 10, y);
+  y += 10;
+
+  panierArticles.forEach((article: ArticlePanier) => {
+    doc.text(`${article.produit.nom} x ${article.quantite} = ${(article.produit.prix * article.quantite).toFixed(2)} FCFA`, 10, y);
+    y += 10;
+  });
+
+  doc.text(`Total: ${total.toFixed(2)} FCFA`, 10, y + 5);
+  doc.save('facture.pdf');
+}
+
+//  Initialisation
+document.addEventListener('DOMContentLoaded', () => {
+  mettreAJourPanier();
+  mettreAJourNombreArticles();
+
+  const btnVider = document.getElementById('btn-vider');
+  btnVider?.addEventListener('click', () => {
+    panierService.viderPanier();
+    mettreAJourPanier();
+    mettreAJourNombreArticles();
+  });
+
+  const btnCommander = document.getElementById('btn-commander');
+  btnCommander?.addEventListener('click', async () => {
+    const numeroCarte = prompt("💳 Entrez le numéro de votre carte bancaire (16 chiffres) :");
+    if (!numeroCarte || numeroCarte.trim().length < 16) {
+      alert("❌ Numéro de carte invalide. Veuillez réessayer.");
+      return;
     }
 
-    // Gestion du bouton "Commander"
-    const btnCommander = document.getElementById('btn-commander');
-    if (btnCommander) {
-        btnCommander.addEventListener('click', async () => {
-            const success = await panierService.effectuerPaiement();
-            if (success) {
-                alert('Votre commande a été passée avec succès!');
-                panierService.viderPanier();
-                mettreAJourPanier();
-                mettreAJourNombreArticles();
-            } else {
-                alert('Échec de la commande. Essayez à nouveau.');
-            }
-        });
+    const codeSecurite = prompt("🔒 Entrez le code de sécurité (CVV - 3 chiffres) :");
+    if (!codeSecurite || codeSecurite.trim().length !== 3 || isNaN(Number(codeSecurite))) {
+      alert("❌ Code de sécurité invalide. Veuillez réessayer.");
+      return;
     }
+
+    const success = await panierService.effectuerPaiement();
+    if (success) {
+      alert('✅ Votre commande a été validée avec succès ! Merci pour votre achat.');
+      genererFacturePDF();
+      panierService.viderPanier();
+      mettreAJourPanier();
+      mettreAJourNombreArticles();
+    } else {
+      alert('❌ Échec de la commande. Essayez à nouveau.');
+    }
+  });
+
+  const btnFacture = document.getElementById("btn-facture");
+  btnFacture?.addEventListener("click", () => {
+    genererFacturePDF();
+  });
 });

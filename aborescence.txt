@@ -26,3 +26,9 @@ mini-ecommerce/
 ├── index.html
 ├── styles.css
 └── tsconfig.json
+
+
+
+pour le pdf 
+
+npm install jspdf

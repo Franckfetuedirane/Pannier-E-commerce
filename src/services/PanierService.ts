@@ -51,6 +51,7 @@ export class PanierService {
                 return true;
             }
             
+            
             // Vérifier si le stock est suffisant
             if (article.produit.stock < quantite) {
                 alert(`Désolé, il n'y a que ${article.produit.stock} unités disponibles en stock.`);
