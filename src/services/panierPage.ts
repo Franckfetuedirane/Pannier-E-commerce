@@ -84,15 +84,4 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-
-    // Suppression des articles du panier
-    // const boutonsSupprimer = document.querySelectorAll('.btn-supprimer');
-    // boutonsSupprimer.forEach(button => {
-    //     button.addEventListener('click', (e) => {
-    //         const produitId = parseInt((e.target as HTMLElement).getAttribute('data-id')!, 10);
-    //         panierService.supprimerArticle(produitId);
-    //         mettreAJourPanier();
-    //         mettreAJourNombreArticles();
-    //     });
-    // });
 });

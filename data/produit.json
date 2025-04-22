@@ -1,48 +1,272 @@
 [
-    {
-      "id": 1,
-      "nom": "T-shirt classique",
-      "categorie": "Vêtements",
-      "description": "Un T-shirt classique en coton, parfait pour un look décontracté.",
-      "prix": 19.99,
-      "stock": 100,
-      "image": "https://via.placeholder.com/250x250?text=T-shirt"
-    },
-    {
-      "id": 2,
-      "nom": "Jeans slim",
-      "categorie": "Vêtements",
-      "description": "Un T-shirt classique en coton, parfait pour un look décontracté.",
-      "prix": 49.99,
-      "stock": 10,
-      "image": "https://via.placeholder.com/250x250?text=Jeans"
-    },
-    {
-      "id": 3,
-      "nom": "Casque Bluetooth",
-      "categorie": "Électronique",
-      "description": "Un T-shirt classique en coton, parfait pour un look décontracté.",
-      "prix": 89.99,
-      "stock": 10,
-      "image": "https://via.placeholder.com/250x250?text=Casque"
-    },
-    {
-      "id": 4,
-      "nom": "Montre connectée",
-      "categorie": "Accessoires",
-      "description": "Un T-shirt classique en coton, parfait pour un look décontracté.",
-      "prix": 129.99,
-      "stock": 10,
-      "image": "https://via.placeholder.com/250x250?text=Montre"
-    },
-    {
-      "id": 5,
-      "nom": "Sac à dos",
-      "categorie": "Bagagerie",
-      "description": "Un T-shirt classique en coton, parfait pour un look décontracté.",
-      "prix": 39.99,
-      "stock": 10,
-      "image": "https://via.placeholder.com/250x250?text=Sac+à+dos"
-    }
-  ]
-  
+  {
+    "id": 1,
+    "nom": "T-shirt Vintage",
+    "categorie": "Vêtements",
+    "description": "T-shirt doux en coton bio avec motif rétro.",
+    "prix": 22.99,
+    "stock": 80,
+    "image": "https://dummyimage.com/250x250/000/fff&text=T-shirt+Vintage"
+  },
+  {
+    "id": 2,
+    "nom": "Sneakers Urban",
+    "categorie": "Chaussures",
+    "description": "Chaussures basses confortables pour un style urbain.",
+    "prix": 59.99,
+    "stock": 35,
+    "image": "https://dummyimage.com/250x250/000/fff&text=Sneakers+Urban"
+  },
+  {
+    "id": 3,
+    "nom": "Casque Audio Pro",
+    "categorie": "Électronique",
+    "description": "Casque sans fil avec réduction de bruit active.",
+    "prix": 109.99,
+    "stock": 20,
+    "image": "https://dummyimage.com/250x250/000/fff&text=Casque+Audio+Pro"
+  },
+  {
+    "id": 4,
+    "nom": "Montre Élégance",
+    "categorie": "Accessoires",
+    "description": "Montre analogique avec bracelet en cuir véritable.",
+    "prix": 89.99,
+    "stock": 50,
+    "image": "https://dummyimage.com/250x250/000/fff&text=Montre+Élégance"
+  },
+  {
+    "id": 5,
+    "nom": "Sac à Main Chic",
+    "categorie": "Bagagerie",
+    "description": "Sac en simili cuir au design moderne et pratique.",
+    "prix": 74.90,
+    "stock": 40,
+    "image": "https://dummyimage.com/250x250/000/fff&text=Sac+à+Main+Chic"
+  },
+  {
+    "id": 6,
+    "nom": "Lampe Bureau LED",
+    "categorie": "Maison",
+    "description": "Lampe orientable avec lumière blanche froide.",
+    "prix": 34.50,
+    "stock": 60,
+    "image": "https://dummyimage.com/250x250/000/fff&text=Lampe+Bureau+LED"
+  },
+  {
+    "id": 7,
+    "nom": "Pull Oversize",
+    "categorie": "Vêtements",
+    "description": "Pull chaud en laine, coupe ample et stylée.",
+    "prix": 39.99,
+    "stock": 70,
+    "image": "https://dummyimage.com/250x250/000/fff&text=Pull+Oversize"
+  },
+  {
+    "id": 8,
+    "nom": "Montre Connectée Fit",
+    "categorie": "Électronique",
+    "description": "Suivi des activités, fréquence cardiaque, notifications.",
+    "prix": 129.99,
+    "stock": 22,
+    "image": "https://dummyimage.com/250x250/000/fff&text=Montre+Connectée+Fit"
+  },
+  {
+    "id": 9,
+    "nom": "Coffret Parfum Luxe",
+    "categorie": "Beauté",
+    "description": "Parfum intense avec notes boisées et orientales.",
+    "prix": 59.90,
+    "stock": 18,
+    "image": "https://dummyimage.com/250x250/000/fff&text=Coffret+Parfum"
+  },
+  {
+    "id": 10,
+    "nom": "Jeans Denim Brut",
+    "categorie": "Vêtements",
+    "description": "Jean slim en denim de qualité supérieure.",
+    "prix": 44.95,
+    "stock": 100,
+    "image": "https://dummyimage.com/250x250/000/fff&text=Jeans+Denim"
+  },
+  {
+    "id": 11,
+    "nom": "Chargeur Sans Fil",
+    "categorie": "Électronique",
+    "description": "Charge rapide compatible avec iOS et Android.",
+    "prix": 19.99,
+    "stock": 55,
+    "image": "https://dummyimage.com/250x250/000/fff&text=Chargeur+Sans+Fil"
+  },
+  {
+    "id": 12,
+    "nom": "Écouteurs Bluetooth",
+    "categorie": "Électronique",
+    "description": "Écouteurs intra-auriculaires avec autonomie de 24h.",
+    "prix": 49.90,
+    "stock": 60,
+    "image": "https://dummyimage.com/250x250/000/fff&text=Écouteurs"
+  },
+  {
+    "id": 13,
+    "nom": "Sac de Sport",
+    "categorie": "Bagagerie",
+    "description": "Résistant à l'eau avec compartiment chaussures.",
+    "prix": 39.90,
+    "stock": 32,
+    "image": "https://dummyimage.com/250x250/000/fff&text=Sac+de+Sport"
+  },
+  {
+    "id": 14,
+    "nom": "Brosse Lissante",
+    "categorie": "Beauté",
+    "description": "Coiffage rapide et doux pour les cheveux.",
+    "prix": 42.99,
+    "stock": 26,
+    "image": "https://dummyimage.com/250x250/000/fff&text=Brosse+Lissante"
+  },
+  {
+    "id": 15,
+    "nom": "Chemise Homme Slim",
+    "categorie": "Vêtements",
+    "description": "Chemise élégante à porter au bureau ou en soirée.",
+    "prix": 34.99,
+    "stock": 65,
+    "image": "https://dummyimage.com/250x250/000/fff&text=Chemise+Homme"
+  },
+  {
+    "id": 16,
+    "nom": "Tapis de Yoga Antidérapant",
+    "categorie": "Sport",
+    "description": "Parfait pour les séances de yoga ou de pilates.",
+    "prix": 25.50,
+    "stock": 70,
+    "image": "https://dummyimage.com/250x250/000/fff&text=Tapis+de+Yoga"
+  },
+  {
+    "id": 17,
+    "nom": "Baskets Running Air",
+    "categorie": "Chaussures",
+    "description": "Idéales pour la course ou la marche sportive.",
+    "prix": 64.90,
+    "stock": 40,
+    "image": "https://dummyimage.com/250x250/000/fff&text=Baskets+Running"
+  },
+  {
+    "id": 18,
+    "nom": "Haut à Capuche Unisexe",
+    "categorie": "Vêtements",
+    "description": "Confortable, doux et idéal en toute saison.",
+    "prix": 44.90,
+    "stock": 55,
+    "image": "https://dummyimage.com/250x250/000/fff&text=Haut+à+Capuche"
+  },
+  {
+    "id": 19,
+    "nom": "Enceinte Portable Bass+",
+    "categorie": "Électronique",
+    "description": "Son clair avec basses renforcées et design compact.",
+    "prix": 59.00,
+    "stock": 34,
+    "image": "https://dummyimage.com/250x250/000/fff&text=Enceinte+Bluetooth"
+  },
+  {
+    "id": 20,
+    "nom": "Rasoir Électrique 5D",
+    "categorie": "Beauté",
+    "description": "Rasage de précision avec têtes rotatives souples.",
+    "prix": 69.99,
+    "stock": 45,
+    "image": "https://dummyimage.com/250x250/000/fff&text=Rasoir+5D"
+  },
+  {
+    "id": 21,
+    "nom": "Panier de Rangement Tissu",
+    "categorie": "Maison",
+    "description": "Idéal pour organiser placard ou chambre.",
+    "prix": 14.90,
+    "stock": 80,
+    "image": "https://dummyimage.com/250x250/000/fff&text=Panier+Tissu"
+  },
+  {
+    "id": 22,
+    "nom": "Lunettes de Soleil Retro",
+    "categorie": "Accessoires",
+    "description": "Protection UV400 et style intemporel.",
+    "prix": 29.90,
+    "stock": 100,
+    "image": "https://dummyimage.com/250x250/000/fff&text=Lunettes+Soleil"
+  },
+  {
+    "id": 23,
+    "nom": "Caméra de Sécurité HD",
+    "categorie": "Électronique",
+    "description": "Vision nocturne, détection de mouvement.",
+    "prix": 89.00,
+    "stock": 15,
+    "image": "https://dummyimage.com/250x250/000/fff&text=Caméra+Sécurité"
+  },
+  {
+    "id": 24,
+    "nom": "Chemise Lin Été",
+    "categorie": "Vêtements",
+    "description": "Légère, respirante et élégante pour l'été.",
+    "prix": 38.50,
+    "stock": 38,
+    "image": "https://dummyimage.com/250x250/000/fff&text=Chemise+Lin"
+  },
+  {
+    "id": 25,
+    "nom": "Baskets Blanches Classiques",
+    "categorie": "Chaussures",
+    "description": "Incontournables du dressing moderne.",
+    "prix": 54.90,
+    "stock": 60,
+    "image": "https://dummyimage.com/250x250/000/fff&text=Baskets+Blanches"
+  },
+  {
+    "id": 26,
+    "nom": "Bouilloire Électrique Inox",
+    "categorie": "Maison",
+    "description": "Rapide et sécurisée avec arrêt automatique.",
+    "prix": 27.90,
+    "stock": 25,
+    "image": "https://dummyimage.com/250x250/000/fff&text=Bouilloire"
+  },
+  {
+    "id": 27,
+    "nom": "Bracelet Cuir Homme",
+    "categorie": "Accessoires",
+    "description": "Bracelet tendance avec fermoir magnétique.",
+    "prix": 19.90,
+    "stock": 45,
+    "image": "https://dummyimage.com/250x250/000/fff&text=Bracelet+Cuir"
+  },
+  {
+    "id": 28,
+    "nom": "Veste Coupe-Vent Légère",
+    "categorie": "Vêtements",
+    "description": "Imperméable et respirante, parfaite pour le sport.",
+    "prix": 59.90,
+    "stock": 36,
+    "image": "https://dummyimage.com/250x250/000/fff&text=Veste+Coupe-Vent"
+  },
+  {
+    "id": 29,
+    "nom": "Miroir LED Mural",
+    "categorie": "Maison",
+    "description": "Lumière intégrée pour salle de bain ou coiffeuse.",
+    "prix": 79.99,
+    "stock": 10,
+    "image": "https://dummyimage.com/250x250/000/fff&text=Miroir+LED"
+  },
+  {
+    "id": 30,
+    "nom": "Tondeuse Barbe Pro",
+    "categorie": "Beauté",
+    "description": "Précision de coupe, batterie longue durée.",
+    "prix": 44.90,
+    "stock": 28,
+    "image": "https://dummyimage.com/250x250/000/fff&text=Tondeuse+Barbe"
+  }
+]

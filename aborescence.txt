@@ -1,0 +1,28 @@
+// ========== STRUCTURE DES FICHIERS ==========
+
+mini-ecommerce/
+│
+├── src/
+│   ├── models/
+│   │   ├── Produit.ts
+│   │   └── ArticlePanier.ts
+│   │
+│   ├── services/
+│   │   ├── ProduitService.ts
+│   │   |── PanierService.ts
+│   │   └── PanierPage.ts
+│   │
+│   ├── ui/
+│   │   ├── ProduitUI.ts
+│   │   └── PanierUI.ts
+│   │
+│   └── main.ts
+│
+├── data/
+│   └── produits.json
+│
+├── dist/          (généré par TypeScript)
+│
+├── index.html
+├── styles.css
+└── tsconfig.json

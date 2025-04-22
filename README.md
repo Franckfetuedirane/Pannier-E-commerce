@@ -1,28 +1,25 @@
+#  Mini E-Commerce
 
-// ========== STRUCTURE DES FICHIERS ==========
-/*
-mini-ecommerce/
-│
-├── src/
-│   ├── models/
-│   │   ├── Produit.ts
-│   │   └── ArticlePanier.ts
-│   │
-│   ├── services/
-│   │   ├── ProduitService.ts
-│   │   └── PanierService.ts
-│   │
-│   ├── ui/
-│   │   ├── ProduitUI.ts
-│   │   └── PanierUI.ts
-│   │
-│   └── main.ts
-│
-├── data/
-│   └── produits.json
-│
-├── dist/          (généré par TypeScript)
-│
-├── index.html
-├── styles.css
-└── tsconfig.json
+Un mini site e-commerce réalisé en HTML, CSS, TypeScript (compilé en JS), qui permet de naviguer dans une sélection de produits, ajouter des articles au panier et passer commande de manière simple.
+
+---
+
+## Fonctionnalités
+
+-  Affichage dynamique des produits
+-  Gestion complète du panier (ajout, suppression, vidage)
+-  Calcul du total en temps réel
+-  Filtrage par catégories (à venir)
+-  Interface responsive et moderne
+-  Code modulaire via TypeScript
+
+---
+
+##  Mise en route
+
+### 1. Cloner le projet
+```bash
+git clone https://github.com/Franckfetuedirane/Pannier-E-commerce.git
+
+
+

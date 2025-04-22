@@ -1,32 +1,35 @@
-<!-- panier.html -->
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
   <title>Mon Panier</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body>
-    <header>
-        <div id="bouton-panier" class="bouton-panier">
-            <i class="fa fa-shopping-cart"></i>
-            <span id="nombre-articles" class="nombre-articles"></span>
-        </div>
-    </header>
-
-    <div id="conteneur-panier" class="page-panier">
-        <h2>Votre Panier</h2>
-        <div id="contenu-panier" class="contenu-panier"></div>
-        <div id="total-panier" class="total-panier"></div>
-        <div class="boutons-actions">
-            <button id="btn-commander" class="bouton-commander">Commander</button>
-            <button id="btn-vider" class="bouton-vider">Vider le panier</button>
-        </div>
+  <header class="header-panier">
+    <div class="header-left">
+      <a href="index.html" class="logo">MaBoutique</a>
     </div>
+    <div class="header-right">
+      <a href="index.html" class="retour-produits"><i class="fa fa-arrow-left"></i> Produits</a>
+      <div id="bouton-panier" class="bouton-panier">
+        <i class="fa fa-shopping-cart"></i>
+        <span id="nombre-articles" class="nombre-articles"></span>
+      </div>
+    </div>
+  </header>
 
-    <script type="module" src="dist/services/panierPage.js"></script>
-    <!-- <script type="module" src="../services/panierPage.js"></script> -->
+  <div id="conteneur-panier" class="page-panier">
+    <h2>Votre Panier</h2>
+    <div id="contenu-panier" class="contenu-panier"></div>
+    <div id="total-panier" class="total-panier"></div>
+    <div class="boutons-actions">
+      <button id="btn-commander" class="bouton-commander">Commander</button>
+      <button id="btn-vider" class="bouton-vider">Vider le panier</button>
+    </div>
+  </div>
 
+  <script type="module" src="dist/services/panierPage.js"></script>
 </body>
 </html>
-

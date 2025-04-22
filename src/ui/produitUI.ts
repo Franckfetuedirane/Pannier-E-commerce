@@ -137,7 +137,7 @@ export class ProduitUI {
                 <p class="categorie">${produit.categorie}</p>
                 <p class="description">${produit.description}</p>
                 <div class="prix-stock">
-                    <span class="prix">${produit.prix.toFixed(2)} €</span>
+                    <span class="prix">${produit.prix.toFixed(2)} FCFA</span>
                     <span class="stock">Stock: ${produit.stock}</span>
                 </div>
             `;
