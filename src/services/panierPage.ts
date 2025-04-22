@@ -134,13 +134,13 @@ document.addEventListener('DOMContentLoaded', () => {
       alert("❌ Code de sécurité invalide. Veuillez réessayer.");
       return;
     }
-
+    genererFacturePDF(); // D'abord générer la facture
     const success = await panierService.effectuerPaiement();
     if (success) {
-        genererFacturePDF(); // D'abord générer la facture
+       // genererFacturePDF(); // D'abord générer la facture
         alert('✅ Votre commande a été validée avec succès ! Merci pour votre achat.');
-        panierService.viderPanier(); //  Ensuite vider le panier
         mettreAJourPanier();
+        panierService.viderPanier(); //  Ensuite vider le panier
         mettreAJourNombreArticles();
       }
        else {
