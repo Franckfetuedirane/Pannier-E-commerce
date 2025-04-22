@@ -1,6 +1,6 @@
 // src/services/PanierService.ts
-import { ArticlePanier } from '../models/ArticlePanier';
-import { Produit } from '../models/produit';
+import { ArticlePanier } from '../models/ArticlePanier.js';
+import { Produit } from '../models/produit.js';
 
 export class PanierService {
     private articles: ArticlePanier[] = [];
