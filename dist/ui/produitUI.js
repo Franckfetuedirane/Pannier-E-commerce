@@ -32,7 +32,7 @@ export class ProduitUI {
     // Créer les filtres et options de tri
     creerFiltresEtTris() {
         // Conteneur pour les filtres
-        this.filtresContainer.innerHTML = `
+        this.filtresContainer.innerHTML = ` 
             <div class="recherche">
                 <input type="text" id="recherche" placeholder="Rechercher un produit...">
             </div>
@@ -64,23 +64,22 @@ export class ProduitUI {
     }
     // Filtrer et trier les produits selon les sélections
     filtrerProduits() {
-        const recherche = document.getElementById('recherche').value;
+        const recherche = document.getElementById('recherche').value.trim().toLowerCase();
         const categorie = document.getElementById('filtre-categorie').value;
         const tri = document.getElementById('tri-produits').value;
         // Appliquer les filtres
         let produitsFiltres = this.produitService.getProduits();
         // Filtrer par catégorie si nécessaire
         if (categorie !== "Tous") {
-            produitsFiltres = produitsFiltres.filter(p => p.categorie === categorie);
+            produitsFiltres = produitsFiltres.filter(p => p.categorie.toLowerCase() === categorie.toLowerCase());
         }
         // Filtrer par recherche si nécessaire
-        if (recherche.trim() !== "") {
-            const termeLower = recherche.toLowerCase();
-            produitsFiltres = produitsFiltres.filter(p => p.nom.toLowerCase().includes(termeLower) ||
-                p.categorie.toLowerCase().includes(termeLower));
+        if (recherche !== "") {
+            produitsFiltres = produitsFiltres.filter(p => p.nom.toLowerCase().includes(recherche) ||
+                p.categorie.toLowerCase().includes(recherche));
         }
         // Trier les produits
-        produitsFiltres = this.produitService.trierProduits(tri);
+        produitsFiltres = this.produitService.trierProduits(produitsFiltres, tri);
         // Mettre à jour l'affichage
         this.afficherProduits(produitsFiltres);
     }

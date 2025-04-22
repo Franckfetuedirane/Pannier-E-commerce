@@ -38,20 +38,6 @@ export class ProduitService {
         return this.produits.filter(p => p.nom.toLowerCase().includes(termeMinuscule) ||
             p.description.toLowerCase().includes(termeMinuscule));
     }
-    // Trier les produits
-    trierProduits(methode) {
-        const produitsTries = [...this.produits];
-        switch (methode) {
-            case 'prix-asc':
-                return produitsTries.sort((a, b) => a.prix - b.prix);
-            case 'prix-desc':
-                return produitsTries.sort((a, b) => b.prix - a.prix);
-            case 'nom':
-                return produitsTries.sort((a, b) => a.nom.localeCompare(b.nom));
-            default:
-                return produitsTries;
-        }
-    }
     // S'abonner aux changements
     abonner(callback) {
         this.listeners.push(callback);
@@ -63,6 +49,19 @@ export class ProduitService {
     // Notifier les observateurs
     notifierObservateurs() {
         this.listeners.forEach(callback => callback(this.getProduits()));
+    }
+    // Trier les produits selon le critère spécifié
+    trierProduits(produits, critere) {
+        switch (critere) {
+            case 'prix-asc':
+                return produits.sort((a, b) => a.prix - b.prix);
+            case 'prix-desc':
+                return produits.sort((a, b) => b.prix - a.prix);
+            case 'nom':
+                return produits.sort((a, b) => a.nom.localeCompare(b.nom));
+            default:
+                return produits;
+        }
     }
 }
 //# sourceMappingURL=ProduitService.js.map

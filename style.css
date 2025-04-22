@@ -40,20 +40,11 @@ header {
     align-items: center;
 }
 
-.main-content {
-    max-width: 1200px;
-    margin: 2rem auto;
-    padding: 0 1rem;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
-}
-
 @media (min-width: 768px) {
     .main-content {
         grid-template-columns: 250px 1fr;
     }
-}
+} 
 
 /* Filtres */
 .filtres-container {
@@ -83,44 +74,185 @@ header {
 }
 
 /* Produits */
-.produits-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 1.5rem;
-}
 
-.produit-carte {
+
+
+
+
+
+
+
+
+
+
+
+/* Global Styles */
+/* body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+  } */
+  
+  /* Main content container */
+  .main-content {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 1200px;
     background-color: white;
     border-radius: 8px;
-    overflow: hidden;
-    box-shadow: var(--shadow);
-    transition: transform 0.3s ease;
-}
-
-.produit-carte:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Filter section */
+  .filtres-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+  }
+  
+  .filtres-container input,
+  .filtres-container select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .filtres-container input {
+    width: 200px;
+  }
+  
+  .filtres-container select {
+    width: 200px;
+  }
+  
+  .filtres-container label {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  /* Products container */
+  .produits-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+  }
+  
+  .produit-carte {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+  
+  .produit-carte:hover {
     transform: translateY(-5px);
-}
-
-.produit-carte img { 
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  }
+  
+  .produit-carte img {
     width: 100%;
     height: auto;
-}
-
-
-.champ-paiement {
-    margin-bottom: 1rem;
-}
-
-.champ-paiement label {
-    display: block;
-    margin-bottom: 0.5rem;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+  
+  .produit-carte h3 {
+    font-size: 18px;
+    color: #333;
+    margin: 10px 0;
+  }
+  
+  .produit-carte .categorie {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .produit-carte .description {
+    font-size: 14px;
+    color: #888;
+    margin: 10px 0;
+  }
+  
+  .produit-carte .prix-stock {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .produit-carte .prix {
+    font-size: 16px;
     font-weight: bold;
-}
-
-.champ-paiement input {
-    width: 100%;
-    padding: 0.75rem;
-    border: 1px solid var(--border-color);
+    color: #333;
+  }
+  
+  .produit-carte .stock {
+    font-size: 14px;
+    color: #888;
+  }
+  
+  /* Button styles */
+  .btn-ajouter {
+    background-color: #28a745;
+    color: white;
+    padding: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
     border-radius: 4px;
-    font-size: 1rem;
-}
+    cursor: pointer;
+    margin-top: 10px;
+    width: 100%;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-ajouter:hover {
+    background-color: #218838;
+  }
+  
+  .out-of-stock {
+    background-color: #dc3545;
+    cursor: not-allowed;
+  }
+  
+  .out-of-stock:hover {
+    background-color: #c82333;
+  }
+  
+  /* No products message */
+  .no-products {
+    font-size: 16px;
+    text-align: center;
+    color: #888;
+    font-weight: bold;
+  }
+  
+  /* Responsive design */
+  @media screen and (max-width: 768px) {
+    .filtres-container {
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    .produits-container {
+      grid-template-columns: 1fr 1fr;
+    }
+  
+    .produit-carte {
+      padding: 12px;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .produits-container {
+      grid-template-columns: 1fr;
+    }
+  }
+  

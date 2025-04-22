@@ -1,8 +1,8 @@
 // ========== UI ==========
 // src/ui/ProduitUI.ts
-import { Produit } from '../models/produit';
-import { ProduitService } from '../services/ProduitService';
-import { PanierService } from '../services/PanierService';
+import { Produit } from '../models/produit.js';
+import { ProduitService } from '../services/ProduitService.js';
+import { PanierService } from '../services/PanierService.js';
 
 export class ProduitUI {
     private produitService: ProduitService;
@@ -53,7 +53,7 @@ export class ProduitUI {
     // Créer les filtres et options de tri
     private creerFiltresEtTris(): void {
         // Conteneur pour les filtres
-        this.filtresContainer.innerHTML = `
+        this.filtresContainer.innerHTML = ` 
             <div class="recherche">
                 <input type="text" id="recherche" placeholder="Rechercher un produit...">
             </div>
@@ -88,7 +88,7 @@ export class ProduitUI {
 
     // Filtrer et trier les produits selon les sélections
     private filtrerProduits(): void {
-        const recherche = (document.getElementById('recherche') as HTMLInputElement).value;
+        const recherche = (document.getElementById('recherche') as HTMLInputElement).value.trim().toLowerCase();
         const categorie = (document.getElementById('filtre-categorie') as HTMLSelectElement).value;
         const tri = (document.getElementById('tri-produits') as HTMLSelectElement).value as 'prix-asc' | 'prix-desc' | 'nom';
         
@@ -97,20 +97,19 @@ export class ProduitUI {
         
         // Filtrer par catégorie si nécessaire
         if (categorie !== "Tous") {
-            produitsFiltres = produitsFiltres.filter(p => p.categorie === categorie);
+            produitsFiltres = produitsFiltres.filter(p => p.categorie.toLowerCase() === categorie.toLowerCase());
         }
         
         // Filtrer par recherche si nécessaire
-        if (recherche.trim() !== "") {
-            const termeLower = recherche.toLowerCase();
+        if (recherche !== "") {
             produitsFiltres = produitsFiltres.filter(p => 
-                p.nom.toLowerCase().includes(termeLower) || 
-                p.categorie.toLowerCase().includes(termeLower)
+                p.nom.toLowerCase().includes(recherche) || 
+                p.categorie.toLowerCase().includes(recherche)
             );
         }
         
         // Trier les produits
-        produitsFiltres = this.produitService.trierProduits(tri);
+        produitsFiltres = this.produitService.trierProduits(produitsFiltres, tri);
         
         // Mettre à jour l'affichage
         this.afficherProduits(produitsFiltres);

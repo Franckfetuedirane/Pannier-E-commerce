@@ -111,9 +111,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         const success = await panierService.effectuerPaiement();
         if (success) {
+            genererFacturePDF(); // D'abord générer la facture
             alert('✅ Votre commande a été validée avec succès ! Merci pour votre achat.');
-            genererFacturePDF();
-            panierService.viderPanier();
+            panierService.viderPanier(); //  Ensuite vider le panier
             mettreAJourPanier();
             mettreAJourNombreArticles();
         }
