@@ -96,18 +96,85 @@ function genererFacturePDF() {
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF();
 
-  let y = 10;
-  doc.text('Facture - MaBoutique', 10, y);
+  let y = 20;
+
+  // === Petite icône au lieu du logo ===
+  doc.setFontSize(30);
+  doc.text('', 105, y, { align: 'center' });
+
+  y += 20;
+
+  // === Titre principal ===
+  doc.setFontSize(20);
+  doc.setTextColor(41, 128, 185); // Bleu doux
+  doc.setFont("helvetica", "bold");
+  doc.text('FACTURE', 105, y, { align: 'center' });
+
   y += 10;
 
+  // === Sous-titre ===
+  doc.setFontSize(12);
+  doc.setTextColor(0, 0, 0);
+  doc.setFont("times", "italic");
+  doc.text('Merci pour votre commande chez MaBoutique !', 105, y, { align: 'center' });
+
+  y += 20;
+
+  // === En-tête du tableau ===
+  doc.setFillColor(41, 128, 185); // Bleu clair
+  doc.rect(10, y, 190, 10, 'F'); // Rectangle coloré
+  doc.setFontSize(12);
+  doc.setTextColor(255, 255, 255);
+  doc.text('Produit', 15, y + 7);
+  doc.text('Quantité', 85, y + 7);
+  doc.text('Prix Unitaire', 120, y + 7);
+  doc.text('Total', 170, y + 7);
+
+  y += 15;
+
+  // === Corps du tableau ===
+  doc.setFont("helvetica", "normal");
+  doc.setFontSize(11);
+  doc.setTextColor(0, 0, 0);
+
   panierArticles.forEach((article: ArticlePanier) => {
-    doc.text(`${article.produit.nom} x ${article.quantite} = ${(article.produit.prix * article.quantite).toFixed(2)} FCFA`, 10, y);
+    doc.text(article.produit.nom, 15, y);
+    doc.text(`${article.quantite}`, 90, y);
+    doc.text(`${article.produit.prix.toFixed(2)} FCFA`, 120, y);
+    const prixTotal = (article.produit.prix * article.quantite).toFixed(2);
+    doc.text(`${prixTotal} FCFA`, 170, y);
     y += 10;
   });
 
-  doc.text(`Total: ${total.toFixed(2)} FCFA`, 10, y + 5);
+  // === Ligne de séparation ===
+  y += 5;
+  doc.setDrawColor(200, 200, 200);
+  doc.line(10, y, 200, y);
+
+  y += 10;
+
+  // === Total général ===
+  doc.setFont("helvetica", "bold");
+  doc.setFontSize(14);
+  doc.setTextColor(44, 62, 80);
+  doc.text('Total à payer :', 120, y);
+  doc.text(`${total.toFixed(2)} FCFA`, 170, y);
+
+  // === Date et Remerciement en bas ===
+  const today = new Date();
+  const dateStr = today.toLocaleDateString();
+
+  y += 30;
+  doc.setFontSize(10);
+  doc.setFont("times", "italic");
+  doc.setTextColor(100, 100, 100);
+  doc.text(`Date : ${dateStr}`, 10, 290);
+  doc.text('À très bientôt sur MaBoutique', 105, 290, { align: 'center' });
+
+  // === Sauvegarder le PDF ===
   doc.save('facture.pdf');
 }
+
 
 //  Initialisation
 document.addEventListener('DOMContentLoaded', () => {
